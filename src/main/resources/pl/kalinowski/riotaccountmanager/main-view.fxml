@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.12" fx:controller="pl.kalinowski.riotaccountmanager.MainController">
+    <padding>
+        <Insets bottom="10" left="10" right="10" top="10" />
+    </padding>
+   <Button onAction="#refreshList" text="Odśwież" />
+
+    <ListView fx:id="accountListView" prefHeight="200" />
+
+    <HBox spacing="10">
+        <Button onAction="#onAddAccount" text="Dodaj konto" />
+        <Button onAction="#onRemoveAccount" text="Usuń konto" />
+        <Button onAction="#onLoginAccount" text="Zaloguj" />
+    </HBox>
+</VBox>
