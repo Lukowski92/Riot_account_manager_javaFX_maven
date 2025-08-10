@@ -1,6 +1,7 @@
 package pl.kalinowski.riotaccountmanager;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
 
@@ -17,6 +18,25 @@ public class MainController {
     @FXML
     public void initialize() {
         refreshList();
+
+        accountListView.setCellFactory(lv -> {
+            ListCell<Account> cell = new ListCell<>() {
+                @Override
+                protected void updateItem(Account item, boolean empty) {
+                    super.updateItem(item, empty);
+                    setText(empty || item == null ? null : item.getUsername());
+                }
+            };
+
+            cell.setOnMouseClicked(e -> {
+                if (!cell.isEmpty() && e.getClickCount() == 2) {
+                    Account selected = cell.getItem();
+                    onLoginAccount(selected);
+                }
+            });
+
+            return cell;
+        });
     }
 
     @FXML
@@ -52,19 +72,34 @@ public class MainController {
         refreshList();
     }
 
-    //Logowanie
+    //Logowanie przycisk
     @FXML
-    public void onLoginAccount() {
+    public void onLoginAccountButton() {
         Account selected = accountListView.getSelectionModel().getSelectedItem();
         if (selected != null) {
             String decryptedPassword = CryptoUtil.decrypt(selected.getEncryptedPassword());
             char[] passwordChars = decryptedPassword.toCharArray();  // <-- konwersja na char[]
             RiotLauncher.login(selected.getUsername(), passwordChars);
 
-            // Dla bezpieczeństwa od razu wyczyść tablicę po użyciu (opcjonalnie):
+            // Dla bezpieczeństwa od razu wyczyść tablicę po użyciu
             Arrays.fill(passwordChars, '0');
         }
     }
+
+    //lgowanie z listy
+    @FXML
+    public void onLoginAccount(Account selected) {
+        if (selected != null) {
+            String decryptedPassword = CryptoUtil.decrypt(selected.getEncryptedPassword());
+            char[] passwordChars = decryptedPassword.toCharArray();  // <-- konwersja na char[]
+            RiotLauncher.login(selected.getUsername(), passwordChars);
+
+            // Dla bezpieczeństwa od razu wyczyść tablicę po użyciu
+            Arrays.fill(passwordChars, '0');
+        }
+    }
+
+
 
 }
 

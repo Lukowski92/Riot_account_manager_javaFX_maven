@@ -31,6 +31,7 @@ public class SQLiteAccountRepository implements AccountRepository {
                         rs.getInt("id"),
                         rs.getString("username"),
                         rs.getString("encrypted_password")
+
                 ));
             }
         } catch (SQLException e) {

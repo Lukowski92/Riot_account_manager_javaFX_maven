@@ -5,10 +5,12 @@ public class Account {
     private String username;
     private String encryptedPassword;
 
+
     public Account(int id, String username, String encryptedPassword) {
         this.id = id;
         this.username = username;
         this.encryptedPassword = encryptedPassword;
+
     }
 
     public int getId() {
@@ -34,6 +36,7 @@ public class Account {
     public void setEncryptedPassword(String encryptedPassword) {
         this.encryptedPassword = encryptedPassword;
     }
+
     @Override
     public String toString() {
         return username; // co ma się wyświetlać w ListView

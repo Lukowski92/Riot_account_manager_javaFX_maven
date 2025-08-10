@@ -15,6 +15,6 @@
     <HBox spacing="10">
         <Button onAction="#onAddAccount" text="Dodaj konto" />
         <Button onAction="#onRemoveAccount" text="Usuń konto" />
-        <Button onAction="#onLoginAccount" text="Zaloguj" />
+        <Button onAction="#onLoginAccountButton" text="Zaloguj" />
     </HBox>
 </VBox>

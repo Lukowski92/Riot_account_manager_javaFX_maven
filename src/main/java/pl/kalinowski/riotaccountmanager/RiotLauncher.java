@@ -17,7 +17,7 @@ public class RiotLauncher {
             ).start();
 
             System.out.println("Riot Client uruchomiony...");
-            Thread.sleep(5000); // ⏳ Poczekaj na uruchomienie (dopasuj do szybkości PC)
+            Thread.sleep(5000); // Poczekaj na uruchomienie (dopasuj do szybkości PC)
 
             Robot robot = new Robot();
 
