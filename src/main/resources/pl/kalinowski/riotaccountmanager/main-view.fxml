@@ -9,6 +9,8 @@
         <Insets bottom="10" left="10" right="10" top="10" />
     </padding>
    <Button onAction="#refreshList" text="Odśwież" />
+    <Button text="Konfiguracja" onAction="#onConfigurePath" />
+
 
     <ListView fx:id="accountListView" prefHeight="200" />
 

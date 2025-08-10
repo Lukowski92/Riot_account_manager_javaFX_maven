@@ -7,11 +7,14 @@ import java.util.Arrays;
 
 public class RiotLauncher {
 
-    public static void login(String username, char[] password) {
+
+    public static void login(String username, char[] password,String riotClientPath) {
+
         try {
             // 1. Uruchom Riot Client z parametrami
+
             new ProcessBuilder(
-                    "C:\\Riot Games\\Riot Client\\RiotClientServices.exe",
+                    riotClientPath,
                     "--launch-product=league_of_legends",
                     "--launch-patchline=live"
             ).start();
